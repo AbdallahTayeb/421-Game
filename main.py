@@ -1,5 +1,5 @@
-from objects import Dice, Hand, Player
-from rules import rules
+from game_structure import Dice, Hand, Player
+from set_rules import rules
 
 if __name__ == "__main__":
   name1 = input("Player 1 ? ")
