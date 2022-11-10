@@ -37,6 +37,7 @@ class Player():
     def __init__(self,name,hand):
         self.name=name
         self.hand=hand
+        self.balance = 0
 
     def play(self):
         print(f"{self.name} turn ...")
@@ -49,3 +50,22 @@ class Player():
                 self.hand.throw(answer)
         print(f"{self.name} final's score {self.hand.get_score()}")
         return self.hand.get_score()
+
+    def deposit(self, amount):
+        self.balance += amount
+
+class Bank():
+    def __init__(self,fishes):
+        self.fishes = fishes
+
+    def withdraw(self,value,player):
+        player.deposit(min(self.fishes,value))
+        self.fishes = max(0,self.fishes-value)
+
+
+def get_score(value,scores):
+    if value in scores.keys():
+        score = scores[value]
+    else:
+        score = 1
+    return score
